@@ -10,4 +10,4 @@ hash = {
 }
 
 print 'Number of keys which start with \'yes\': '
-puts hash.select { |k| k.to_s.start_with?('yes') }.count
+puts hash.select { |k| k.to_s.start_with?('yes') }.size
