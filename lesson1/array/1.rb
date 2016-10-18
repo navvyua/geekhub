@@ -1,8 +1,8 @@
-array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+array = (1..10).to_a
 
-array.each { |el| puts el }
+array.each { |e| puts e }
 
-array.each { |el| puts el if el > 5 }
+puts array.select { |e| e > 5 }
 
 odd_numbers = array.select(&:odd?)
 puts odd_numbers

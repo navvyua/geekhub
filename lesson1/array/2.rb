@@ -1,13 +1,7 @@
-sum = 0
+array = Array.new(4) { Array.new(4) { rand(-10..10) } }
 
-a = Array.new(4) { Array.new(4) { rand(-10..10) } }
-p a
+sum = array.flatten!.select! { |e| e < 0 }.inject { |a, e| a + e }
 
-a.flatten.each do |el|
-  if el < 0
-    sum += el
-    puts el
-  end
-end
-
-puts "\nSum of negative numbers: #{sum}"
+puts "Sum of negative numbers: #{sum}"
+puts 'Negative numbers:'
+puts array
