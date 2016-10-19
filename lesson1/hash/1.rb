@@ -9,3 +9,5 @@ i = 1
   hash[e] = cal_fib(i)
   i += 1
 end
+
+hash.each_pair { |k, v| puts "#{k}: #{v}" if v < 15 }
