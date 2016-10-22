@@ -1,22 +1,30 @@
 class DictionarySearch
   def initialize(file_path)
-    @words = []
+    @dictionary = {}
     @word_pairs = []
 
     File.open(file_path, 'r') do |f|
-      f.each_line { |line| @words << line.chomp }
+      f.each_line do |line|
+        line.chomp!
+        next if line[-1] == line[-2] || line.size < 3
+        key = line[0..-3]
+        @dictionary[key] ||= []
+        @dictionary[key] << line[-2..-1]
+      end
     end
 
-    @words.reject! { |word| word[-1] == word[-2] || word.size < 3 }
+    @dictionary.delete_if { |_k, v| v.size == 1 }
   end
 
   def word_pairs
-    @words.each do |word1|
-      @words.each do |word2|
-        next unless word1 == word2[0..-3].to_s + word2[-2..-1].to_s.reverse
-        @word_pairs << [word1, word2]
-        @words.delete(word1)
-        @words.delete(word2)
+    @dictionary.each_pair do |k, v|
+      v.each do |e1|
+        v.each do |e2|
+          if e1 == e2.to_s.reverse
+            @word_pairs << [k + e1, k + e2]
+            v.delete(e2)
+          end
+        end
       end
     end
 
