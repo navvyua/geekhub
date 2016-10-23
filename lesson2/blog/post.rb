@@ -1,6 +1,5 @@
 class Post
   attr_reader :content, :author, :created_at
-  attr_writer :likes
   @@posts = []
 
   def self.show_all

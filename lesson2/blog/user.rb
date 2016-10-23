@@ -1,6 +1,5 @@
 class User
   attr_reader :first_name, :last_name, :age
-  attr_writer :likes
   @@users = []
 
   def self.show_all
