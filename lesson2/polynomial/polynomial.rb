@@ -1,4 +1,3 @@
-# dasdsa
 class Polynomial
   def initialize(elements = [])
     raise ArgumentError, 'Two or more coefficients are required' if elements.size < 2
