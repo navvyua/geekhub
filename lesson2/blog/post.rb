@@ -31,7 +31,8 @@ class Post
     puts
     puts @content
     puts
-    puts "[ Likes #{@likes.size} | Author: #{@author} | #{@created_at} ]".center(60)
+    puts "[ Likes #{@likes.size} | Author: #{@author} \
+| #{@created_at} ]".center(60)
     show_likes unless @likes.size.zero?
     puts ''.center(60, '-')
   end
