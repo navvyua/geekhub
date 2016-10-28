@@ -15,7 +15,7 @@ class Polynomial
   end
 
   def to_s
-    @polynomial ||= 0.to_s
+    @polynomial ||= '0'
   end
 
   private
