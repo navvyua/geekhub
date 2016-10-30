@@ -1,0 +1,20 @@
+<h1>List of books:</h1>
+
+<%= link_to 'Create new book', new_book_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+  </tr>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.id %></td>
+      <td><%= book.title %></td>
+      <td><%= link_to 'Show', book %></td>
+      <td><%= link_to 'Edit', edit_book_path(book) %></td>
+      <td><%= link_to 'Delete', book, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
