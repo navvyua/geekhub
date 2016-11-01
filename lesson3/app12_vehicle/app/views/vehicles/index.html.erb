@@ -1,0 +1,20 @@
+<h1>List of vehicles</h1>
+
+<%= link_to 'Create new vehicles', new_vehicle_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Model</th>
+  </tr>
+  <% @vehicles.each do |vehicle| %>
+    <tr>
+      <td><%= vehicle.id %></td>
+      <td><%= vehicle.model %></td>
+      <td><%= link_to 'Show', vehicle %></td>
+      <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+      <td><%= link_to 'Delete', vehicle, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
