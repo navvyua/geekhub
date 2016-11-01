@@ -1,0 +1,20 @@
+<h1>List of carts</h1>
+
+<%= link_to 'Create new cart', new_cart_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Item</th>
+  </tr>
+  <% @carts.each do |cart| %>
+    <tr>
+      <td><%= cart.id %></td>
+      <td><%= cart.item %></td>
+      <td><%= link_to 'Show', cart %></td>
+      <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
+      <td><%= link_to 'Delete', cart, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
