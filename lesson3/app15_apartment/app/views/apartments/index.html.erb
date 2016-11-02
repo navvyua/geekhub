@@ -1,0 +1,20 @@
+<h1>List of apartments</h1>
+
+<%= link_to 'Create new apartment', new_apartment_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Stage</th>
+  </tr>
+  <% @apartments.each do |apartment| %>
+    <tr>
+      <td><%= apartment.id %></td>
+      <td><%= apartment.stage %></td>
+      <td><%= link_to 'Show', apartment %></td>
+      <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
+      <td><%= link_to 'Delete', apartment, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
