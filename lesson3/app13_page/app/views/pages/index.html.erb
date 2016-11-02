@@ -1,0 +1,20 @@
+<h1>List of pages</h1>
+
+<%= link_to 'Create new page', new_page_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+  </tr>
+  <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.id %></td>
+      <td><%= page.title %></td>
+      <td><%= link_to 'Show', page %></td>
+      <td><%= link_to 'Edit', edit_page_path(page) %></td>
+      <td><%= link_to 'Delete', page, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
