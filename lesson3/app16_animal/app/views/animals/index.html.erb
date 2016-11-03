@@ -1,0 +1,20 @@
+<h1>List of animals</h1>
+
+<%= link_to 'Create new animal', new_animal_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% @animals.each do |animal| %>
+    <tr>
+      <td><%= animal.id %></td>
+      <td><%= animal.name %></td>
+      <td><%= link_to 'Show', animal %></td>
+      <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
+      <td><%= link_to 'Delete', animal, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
