@@ -1,0 +1,20 @@
+<h1>List of pictures</h1>
+
+<%= link_to 'Create new picture', new_picture_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Url</th>
+  </tr>
+  <% @pictures.each do |picture| %>
+    <tr>
+      <td><%= picture.id %></td>
+      <td><%= picture.url %></td>
+      <td><%= link_to 'Show', picture %></td>
+      <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+      <td><%= link_to 'Delete', picture, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
