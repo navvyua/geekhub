@@ -1,0 +1,25 @@
+<p>
+  Sign in as <%= link_to current_user.username, current_user %>,
+  <%= link_to 'Sign Out', sign_out_path %>
+</p>
+
+<h1>List of posts:</h1>
+
+<%= link_to 'Create new post', new_post_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Text</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <th><%= post.id %></th>
+      <th><%= post.text %></th>
+      <th><%= link_to 'Show', post %></th>
+      <th><%= link_to 'Edit', edit_post_path(post) %></th>
+      <th><%= link_to 'Delete', post, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></th>
+    </tr>
+  <% end %>
+</table>
