@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticated_only
   before_action :current_book, only: [:show, :edit, :update, :destroy]
 
   def index
