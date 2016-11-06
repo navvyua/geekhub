@@ -1,0 +1,25 @@
+<p>
+  Signed in as <%= link_to current_user.username, current_user %> |
+  <%= link_to 'Sign Out', sign_out_path %>
+</p>
+
+<h1>List of items</h1>
+
+<%= link_to 'Create new item', new_item_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= link_to 'Show', item %></td>
+      <td><%= link_to 'Edit', edit_item_path(item) %></td>
+      <td><%= link_to 'Delete', item, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
