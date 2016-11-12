@@ -1,0 +1,12 @@
+.row
+  = link_to 'New post', new_user_post_path(@user),
+          class: 'btn btn-primary center btn-lg btn-new-post'
+
+.row
+  - @posts.each do |post|
+    .card.col-xs-8.offset-xs-2
+      = image_tag post.image, class: 'card-img-top'
+      .card-block
+        h4.card-title = post.title
+        p.card-text = post.text.truncate(20)
+        = link_to 'More', [@user, post], class: 'btn btn-outline-primary'
