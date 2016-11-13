@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :owner_or_admin_only
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
   def show
