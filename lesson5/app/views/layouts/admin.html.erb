@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lesson5Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <p>
+    <%= link_to 'Users', admin_users_path %> |
+    <%= link_to 'Posts', admin_posts_path %> |
+    <%= link_to 'Exit from admin page', current_user %>
+  </p>
+  <%= yield %>
+</div>
+
+</body>
+</html>

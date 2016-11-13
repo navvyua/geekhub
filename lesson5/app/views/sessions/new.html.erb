@@ -1,0 +1,12 @@
+<% if current_user %>
+  You are already signed in!
+  <%= link_to 'Profile', current_user %>
+<% else %>
+  <%= form_tag sessions_path do %>
+    <%= text_field_tag :email %>
+    <%= password_field_tag :password %>
+    <%= submit_tag 'Sign in' %>
+  <% end %>
+
+  <%= link_to 'Sign up', sign_up_path %>
+<% end %>
