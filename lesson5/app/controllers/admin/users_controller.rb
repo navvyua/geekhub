@@ -18,6 +18,6 @@ class Admin::UsersController < AdminController
   private
 
   def current_user
-    @user ||= User.find(params[:id]) if params[:id]
+    @user = User.find(params[:id])
   end
 end
