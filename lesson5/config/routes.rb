@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users
-    resources :posts
+    resources :users, only: [:index, :update, :destroy]
+    resources :posts, only: [:index, :destroy]
   end
 end
