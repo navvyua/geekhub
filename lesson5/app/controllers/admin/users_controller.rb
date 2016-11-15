@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  before_action :current_user, only: [:update, :destroy]
+  before_action :current_resource, only: [:update, :destroy]
 
   def index
     @users = User.all
@@ -17,7 +17,7 @@ class Admin::UsersController < AdminController
 
   private
 
-  def current_user
+  def current_resource
     @user = User.find(params[:id])
   end
 end

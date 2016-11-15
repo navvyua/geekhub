@@ -1,9 +1,0 @@
-<h2>Posts</h2>
-
-<% if @posts.present? %>
-  <%= render 'posts' %>
-  <%= will_paginate @posts %>
-<% else %>
-  You don't have any posts now!
-<% end %>
-<%= link_to 'New post', new_user_post_path(@user) %>

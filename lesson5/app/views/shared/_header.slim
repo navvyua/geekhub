@@ -1,0 +1,7 @@
+- if current_user
+  p
+    = image_tag current_user.profile.avatar, size: '100x50'
+    = current_user.email
+    = link_to 'Sign Out', log_out_path
+    - if current_user.admin
+      = link_to 'Admin panel', admin_users_path

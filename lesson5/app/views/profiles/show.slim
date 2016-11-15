@@ -1,0 +1,15 @@
+h1 #{@user.email} profile
+
+p
+  = image_tag @profile.avatar
+  br
+  First name: #{@profile.first_name}
+  br
+  Last name: #{@profile.last_name}
+  br
+  Birthday: #{@profile.birthday}
+  br
+  Gender: #{get_string_from_gender(@profile.gender)
+
+= link_to 'Edit profile', edit_user_profile_path(@user, @profile)
+= link_to 'Back', @user

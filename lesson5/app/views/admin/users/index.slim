@@ -1,0 +1,19 @@
+h1 Users
+
+table
+  thead
+    tr
+      th ID
+      th Email
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.id
+        td = user.email
+        - if user.admin
+          td = link_to 'Disable admin', admin_user_path(user, admin: false),
+                       method: :patch
+        - else
+          td = link_to 'Enable admin', admin_user_path(user, admin: true),
+                       method: :patch
+        td = link_to 'Delete', admin_user_path(user), method: :delete
