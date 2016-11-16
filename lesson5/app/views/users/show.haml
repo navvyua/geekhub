@@ -1,0 +1,7 @@
+%h1 Hello, boy!
+
+%p Currently, you have #{@user.posts.count} posts
+
+%p = link_to 'Your profile', [@user, @user.profile]
+%p = link_to 'Your posts', user_posts_path(@user)
+%p = link_to 'New post', new_user_post_path(@user)

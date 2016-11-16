@@ -1,16 +1,15 @@
-doctype html
-html
-  head
-    title Lesson5Blog
-    meta name="viewport" content="width=device-width, initial-scale=1.0"
+%doctype html
+%html
+  %head
+    %title Lesson5Blog
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
 
-  body
+  %body
     .container
-      p
-        = link_to 'Users', admin_users_path |
-        = link_to 'Posts', admin_posts_path |
+      %p
+        = link_to 'Users', admin_users_path
+        = link_to 'Posts', admin_posts_path
         = link_to 'Exit from admin page', current_user
     = yield

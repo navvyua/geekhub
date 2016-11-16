@@ -1,12 +1,12 @@
 = form_for [@user, @post] do |f|
-  p
+  %p
     = f.label :title
     = f.text_field :title
-  p
+  %p
     = f.label :text
     = f.text_field :text
-  p
+  %p
     = f.label :image
     = f.file_field :image
-  p
+  %p
     = f.submit

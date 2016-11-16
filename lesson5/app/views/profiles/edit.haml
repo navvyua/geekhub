@@ -1,31 +1,31 @@
-h1 Edit #{@user.email} profile
+%h1 Edit #{@user.email} profile
 
 = form_for [@user, @profile] do |f|
-  p
+  %p
     = f.label :first_name
-    br
+    %br
     = f.text_field :first_name
-  p
+  %p
     = f.label :last_name
-    br
+    %br
     = f.text_field :last_name
-  p
+  %p
     = f.label :gender
-    br
+    %br
     = f.radio_button :gender, false
     = f.label 'Male'
-    br
+    %br
     = f.radio_button :gender, true
     = f.label 'Female'
-  p
+  %p
     = f.label :birthday
-    br
+    %br
     = f.date_field :birthday
-  p
+  %p
     = f.label :avatar
-    br
+    %br
     = f.file_field :avatar
 
-  p = f.submit
+  %p = f.submit
 
 = link_to 'Back', [@user, @profile]

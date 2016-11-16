@@ -1,0 +1,6 @@
+%p Title: #{@post.title}
+%p Text: #{@post.text}
+%p = image_tag @post.image, size: '600x300'
+%p = link_to 'Edit', edit_user_post_path(@user, @post)
+%p = link_to 'Delete', [@user, @post], method: :delete
+%p = link_to 'Back to all posts', user_posts_path(@user)
