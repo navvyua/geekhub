@@ -4,6 +4,6 @@ h2 Posts
   = render 'posts'
   = will_paginate @posts
 - else
-  You don't have any posts now!
+  | You don't have any posts now!
 
 = link_to 'New post', new_user_post_path(@user)
