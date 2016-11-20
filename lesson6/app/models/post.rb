@@ -6,4 +6,6 @@ class Post < ActiveRecord::Base
   self.per_page = 10
 
   mount_uploader :image, ImageUploader
+
+  validates_presence_of :title, :text
 end
