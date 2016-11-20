@@ -1,0 +1,24 @@
+.page-header
+  h1 Categories
+
+p.text-center = link_to 'New category', new_admin_category_path,
+                        class: 'btn btn-success'
+
+.container-fluid
+  .row
+    .col-md-8.col-md-offset-2
+      table.table
+        thead
+          tr
+            th Name
+        tbody
+          - @categories.each do |category|
+            tr
+              td = category.name
+              td
+                .btn-group.btn-group-xs
+                  = link_to 'Edit', edit_admin_category_path(category),
+                             class: 'btn btn-warning'
+                  = link_to 'Delete', admin_category_path(category),
+                            method: :delete, data: { confirm: 'Are you sure?' },
+                            class: 'btn btn-danger'

@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Lesson5Blog
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+
+  body
+    .container-fluid
+      .row
+        .col-md-8.col-md-offset-2
+          = render 'shared/admin_header'
+          .container-fluid
+            .row
+              .col-md-10.col-md-offset-1
+                = yield

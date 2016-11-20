@@ -1,0 +1,19 @@
+.page-header
+  h2 Sign Up
+
+.row
+  .col-md-8.col-md-offset-2
+    = form_for @user do |f|
+      .form-group
+        = f.label      :email
+        = f.text_field :email, class: 'form-control'
+      .form-group
+        = f.label          :password
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label          :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+
+      p = f.submit 'Sign Up', class: 'btn btn-primary btn-block'
+
+    = link_to 'Sign In', sign_in_path, class: 'btn btn-default btn-block'

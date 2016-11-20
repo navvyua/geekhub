@@ -1,0 +1,16 @@
+.page-header
+  h2 Sign In
+
+.row
+  .col-md-8.col-md-offset-2
+    = form_tag sessions_path do
+      .form-group
+        = label_tag      :email
+        = text_field_tag :email, nil, class: 'form-control'
+      .form-group
+        = label_tag          :password
+        = password_field_tag :password, nil, class: 'form-control'
+
+      p = submit_tag 'Sign In', class: 'btn btn-primary btn-block'
+
+    p = link_to 'Sign Up', sign_up_path, class: 'btn btn-default btn-block'

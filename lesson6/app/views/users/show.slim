@@ -1,0 +1,7 @@
+h1 Hello #{@user.profile.first_name}
+
+p Currently, you have #{@user.posts.count} posts
+
+p = link_to 'Your profile', user_profile_path(@user), class: 'btn btn-default'
+
+p = link_to 'Back', user_posts_path(@user), class: 'btn btn-default'

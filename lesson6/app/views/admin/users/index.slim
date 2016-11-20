@@ -1,0 +1,23 @@
+.page-header
+  h1 Users
+
+table.table
+  thead
+    tr
+      th ID
+      th Email
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.id
+        td = user.email
+        td
+          .btn-group.btn-group-xs
+            - if user.admin
+              = link_to 'Disable admin', admin_user_path(user, admin: false),
+                           method: :patch, class: 'btn btn-warning'
+            - else
+              = link_to 'Enable admin', admin_user_path(user, admin: true),
+                           method: :patch, class: 'btn btn-success'
+            = link_to 'Delete', admin_user_path(user), method: :delete,
+                         class: 'btn btn-danger'

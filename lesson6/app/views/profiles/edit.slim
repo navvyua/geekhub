@@ -1,0 +1,32 @@
+.page-header
+  h2 Edit #{@user.email} profile
+
+.row
+  .col-md-8.col-md-offset-2
+    = form_for [@user, @profile] do |f|
+      .form-group
+        = f.label      :first_name
+        = f.text_field :first_name, class: 'form-control'
+      .form-group
+        = f.label      :last_name
+        = f.text_field :last_name, class: 'form-control'
+      .form-group
+        = f.label :gender
+        br
+        = f.radio_button :gender, false
+        = f.label :male
+        br
+        = f.radio_button :gender, true
+        = f.label :female
+      .form-group
+        = f.label :birthday
+        br
+        = f.date_field :birthday, class: 'form-control'
+      .form-group
+        = f.label :avatar
+        br
+        = f.file_field :avatar
+
+      p = f.submit nil, class: 'btn btn-primary'
+
+    p.text-right = link_to 'Back', [@user, @profile], class: 'btn btn-default'

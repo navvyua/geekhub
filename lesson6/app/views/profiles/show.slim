@@ -1,0 +1,25 @@
+.page-header
+  h2 #{@user.email} profile
+
+.media
+  .media-left
+    = image_tag @profile.avatar, size: '200x200' if @profile.avatar.url
+  .media-body
+    table.table
+      tr
+        th First name
+        td = @profile.first_name
+      tr
+        th Last name
+        td = @profile.last_name
+      tr
+        th Birthday
+        td = @profile.birthday
+      tr
+        th Gender
+        td = get_string_from_gender(@profile.gender)
+
+p.text-right
+  = link_to 'Edit profile', edit_user_profile_path(@user, @profile),
+            class: 'btn btn-warning'
+  = link_to 'Back', user_posts_path(current_user), class: 'btn btn-default'
