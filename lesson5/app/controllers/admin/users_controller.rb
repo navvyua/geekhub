@@ -1,4 +1,5 @@
 class Admin::UsersController < AdminController
+  before_action :admin_only
   before_action :current_resource, only: [:update, :destroy]
 
   def index

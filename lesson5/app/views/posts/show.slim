@@ -1,6 +1,24 @@
 p Title: #{@post.title}
+
 p Text: #{@post.text}
+
 p = image_tag @post.image, size: '600x300'
+
+= render 'shared/comment_form'
+
+h2 Comments:
+
+table
+  thead
+    tr
+      th Text
+  tbody
+  - @post.comments.each do |comment|
+    tr
+      td = comment.text
+
 p = link_to 'Edit', edit_user_post_path(@user, @post)
+
 p = link_to 'Delete', [@user, @post], method: :delete
+
 p = link_to 'Back to all posts', user_posts_path(@user)

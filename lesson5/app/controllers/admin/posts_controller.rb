@@ -1,4 +1,6 @@
 class Admin::PostsController < AdminController
+  before_action :admin_only
+
   def index
     @posts = Post.all
   end

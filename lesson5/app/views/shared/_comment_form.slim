@@ -1,0 +1,6 @@
+= form_for @comment do |f|
+  p
+    = f.label :text
+    = f.text_field :text
+
+  p = f.submit 'Add comment'

@@ -9,4 +9,8 @@
     = f.label :image
     = f.file_field :image
   p
+    = f.label :categories
+    br
+    = f.collection_check_boxes :categories, Category.all, :id, :name
+  p
     = f.submit

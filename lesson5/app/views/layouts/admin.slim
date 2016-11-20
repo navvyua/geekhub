@@ -10,7 +10,11 @@ html
   body
     .container
       p
-        = link_to 'Users', admin_users_path |
-        = link_to 'Posts', admin_posts_path |
+        = link_to 'Users', admin_users_path
+        | |
+        = link_to 'Posts', admin_posts_path
+        | |
+        = link_to 'Categories', admin_categories_path
+        | |
         = link_to 'Exit from admin page', current_user
     = yield

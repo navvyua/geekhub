@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -16,9 +17,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = @user.posts.build(post_params)
-    if post.save
-      redirect_to [@user, post]
+    @post = @user.posts.build(post_params)
+    if @post.save
+      pry
+      redirect_to [@user, @post]
     else
       render :new
     end
@@ -43,7 +45,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :image)
+    params.require(:post).permit(:title, :text, :image, :category_ids)
   end
 
   def current_resource
