@@ -1,15 +1,6 @@
 require 'rails_helper'
 
 describe UsersController do
-  # describe 'GET #show' do
-  #   it 'assigns correct @user' do
-  #     user = create(:user)
-  #
-  #     get :show, id: user
-  #     expect(assigns(:user)).to eq(user)
-  #   end
-  # end
-
   describe 'GET #new' do
     it 'assigns @user' do
       get :new
@@ -32,10 +23,6 @@ describe UsersController do
       before(:each) do
         post :create, user: attributes_for(:user)
       end
-
-      # it 'redirects to user posts page' do
-      #   expect(response).to redirect_to user_posts_path(assigns(:user))
-      # end
 
       it 'creates session' do
         expect(session[:user_id]).to eq(assigns(:user).id)
