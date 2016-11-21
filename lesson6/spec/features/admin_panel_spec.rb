@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 feature 'Admin panel' do
+  let(:new_category)   { build(:category) }
+  let(:edited_name)    { 'edit_name' }
+
   before(:each) { sign_in create(:user, :admin) }
 
   scenario 'admin deletes user' do
@@ -21,30 +24,24 @@ feature 'Admin panel' do
   end
 
   scenario 'admin creates category' do
-    let(:category) { build(:category) }
-
     click_link 'Admin panel'
     click_link 'Categories'
     click_link 'New category'
-    fill_in 'Name', with: category.name
+    fill_in 'Name', with: new_category.name
     click_button 'Create Category'
 
-    expect(page).to have_content(category.name)
     expect(Category.all.count).to eq 1
   end
 
   scenario 'admin edits category' do
-    let(:category)      { create(:category) }
-    let(:fake_category) { 'FakeCategory' }
-
+    create(:category)
     click_link 'Admin panel'
     click_link 'Categories'
     click_link 'Edit'
-    fill_in 'Name', with: fake_category
+    fill_in 'Name', with: edited_name
     click_button 'Update Category'
 
-    expect(page).to     have_content(fake_category)
-    expect(page).to_not have_content(category.name)
+    expect(page).to have_content(edited_name)
   end
 
   scenario 'admin deletes category' do

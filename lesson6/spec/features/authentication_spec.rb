@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 feature 'Authentication' do
+  let(:user)             { create(:user) }
+  let(:new_user)         { build(:user) }
+  let(:new_invalid_user) { build(:user, :invalid) }
+
   scenario 'user signs out' do
-    let(:user) { create(:user) }
     sign_in user
     click_link 'Logout'
     expect(page).to have_content('Sign In')
@@ -10,28 +13,24 @@ feature 'Authentication' do
 
   context 'with valid params' do
     scenario 'user signs up' do
-      let(:user) { build(:user) }
-      sign_up user
-      expect(page).to have_content(user.email)
+      sign_up new_user
+      expect(page).to have_content(new_user.email)
     end
 
     scenario 'user signs in' do
-      let(:user) { create(:user) }
       sign_in user
       expect(page).to have_content(user.email)
     end
   end
 
   context 'with invalid params' do
-    let(:user) { build(:user, :invalid) }
-
     scenario 'user signs up' do
-      sign_up user
+      sign_up new_invalid_user
       expect(page).to have_content('Sign Up')
     end
 
     scenario 'user signs in' do
-      sign_in user
+      sign_in new_invalid_user
       expect(page).to have_content('Sign In')
     end
   end
