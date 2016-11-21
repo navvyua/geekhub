@@ -6,18 +6,22 @@
     = image_tag @profile.avatar, size: '200x200' if @profile.avatar.url
   .media-body
     table.table
-      tr
-        th First name
-        td = @profile.first_name
-      tr
-        th Last name
-        td = @profile.last_name
-      tr
-        th Birthday
-        td = @profile.birthday
-      tr
-        th Gender
-        td = get_string_from_gender(@profile.gender)
+      - if @profile.first_name
+        tr
+          th First name
+          td = @profile.first_name
+      - if @profile.last_name.present?
+        tr
+          th Last name
+          td = @profile.last_name
+      - if @profile.birthday
+        tr
+          th Birthday
+          td = @profile.birthday
+      - unless @profile.gender.nil?
+        tr
+          th Gender
+          td = get_string_from_gender(@profile.gender)
 
 p.text-right
   = link_to 'Edit profile', edit_user_profile_path(@user, @profile),

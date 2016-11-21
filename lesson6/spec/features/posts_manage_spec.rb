@@ -32,6 +32,37 @@ feature 'Posts manage' do
 
       expect(page).to have_content('Edit post')
     end
+  end
+
+  context 'with valid params' do
+    scenario 'user creates post' do
+      post = build(:post)
+
+      sign_in user
+
+      click_link 'New post'
+
+      fill_in 'Title', with: post.title
+      fill_in 'Text',  with: post.text
+
+      click_button 'Create Post'
+
+      expect(page).to have_content(post.title)
+      expect(Post.all.count).to eq 1
+    end
+
+    scenario 'user edits post' do
+      create(:post)
+      sign_in user
+
+      click_link 'Edit'
+
+      fill_in 'Text', with: 'new_text'
+
+      click_button 'Update Post'
+
+      expect(page).to have_content('new_text')
+    end
 
     scenario 'user deletes post' do
       post = create(:post)
