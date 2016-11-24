@@ -10,9 +10,6 @@ class PostsController < ApplicationController
     @posts = @user.posts.paginate(page: params[:page])
   end
 
-  def show
-  end
-
   def new
     @post = Post.new
   end
@@ -24,9 +21,6 @@ class PostsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def update

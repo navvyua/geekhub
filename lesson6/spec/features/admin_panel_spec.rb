@@ -1,55 +1,63 @@
 require 'rails_helper'
 
 feature 'Admin panel' do
-  let(:new_category)   { build(:category) }
-  let(:edited_name)    { 'edit_name' }
+  let(:admin_user) { create(:user, :admin) }
+  before(:each) { sign_in admin_user }
 
-  before(:each) { sign_in create(:user, :admin) }
+  context 'list of users' do
+    let!(:sample_user) { create(:user) }
 
-  scenario 'admin deletes user' do
-    create(:user)
-    click_link 'Admin panel'
-    click_link 'Delete'
+    scenario 'admin deletes user' do
+      click_link 'Admin panel'
+      click_link 'Delete'
 
-    expect(User.all.count).to eq 1
+      expect(page).to_not have_content(sample_user.email)
+    end
   end
 
-  scenario 'admin deletes post' do
-    create(:post)
-    click_link 'Admin panel'
-    click_link 'Posts'
-    click_link 'Delete'
+  context 'list of posts' do
+    let!(:sample_post) { create(:post) }
 
-    expect(Post.all.count).to eq 0
+    scenario 'admin deletes post' do
+      click_link 'Admin panel'
+      click_link 'Posts'
+      click_link 'Delete'
+
+      expect(page).to_not have_content(sample_post.title)
+    end
   end
 
-  scenario 'admin creates category' do
-    click_link 'Admin panel'
-    click_link 'Categories'
-    click_link 'New category'
-    fill_in 'Name', with: new_category.name
-    click_button 'Create Category'
+  context 'list of categories' do
+    let(:new_category)     { build(:category) }
+    let(:edited_name)      { 'edit_name' }
+    let!(:sample_category) { create(:category) }
 
-    expect(Category.all.count).to eq 1
-  end
+    scenario 'admin creates category' do
+      click_link 'Admin panel'
+      click_link 'Categories'
+      click_link 'New category'
+      fill_in 'Name', with: new_category.name
+      click_button 'Create Category'
 
-  scenario 'admin edits category' do
-    create(:category)
-    click_link 'Admin panel'
-    click_link 'Categories'
-    click_link 'Edit'
-    fill_in 'Name', with: edited_name
-    click_button 'Update Category'
+      expect(page).to have_content(new_category.name)
+    end
 
-    expect(page).to have_content(edited_name)
-  end
+    scenario 'admin edits category' do
+      click_link 'Admin panel'
+      click_link 'Categories'
+      click_link 'Edit'
+      fill_in 'Name', with: edited_name
+      click_button 'Update Category'
 
-  scenario 'admin deletes category' do
-    create(:category)
-    click_link 'Admin panel'
-    click_link 'Categories'
-    click_link 'Delete'
+      expect(page).to have_content(edited_name)
+    end
 
-    expect(Category.all.count).to eq 0
+    scenario 'admin deletes category' do
+      click_link 'Admin panel'
+      click_link 'Categories'
+      click_link 'Delete'
+
+      expect(page).to_not have_content(sample_category.name)
+    end
   end
 end

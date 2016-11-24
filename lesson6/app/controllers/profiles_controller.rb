@@ -4,12 +4,6 @@ class ProfilesController < ApplicationController
   before_action :current_resource_owner
   before_action :current_resource
 
-  def show
-  end
-
-  def edit
-  end
-
   def update
     if @profile.update(profile_params)
       redirect_to user_profile_path(@user)

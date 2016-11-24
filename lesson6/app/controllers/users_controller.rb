@@ -4,9 +4,6 @@ class UsersController < ApplicationController
 
   before_action :current_resource,     only: :show
 
-  def show
-  end
-
   def new
     @user = User.new
   end

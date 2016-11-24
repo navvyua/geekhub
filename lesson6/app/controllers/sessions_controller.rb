@@ -2,9 +2,6 @@ class SessionsController < ApplicationController
   before_action :authenticated_only,   only: :destroy
   before_action :unauthenticated_only, only: [:new, :create]
 
-  def new
-  end
-
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
