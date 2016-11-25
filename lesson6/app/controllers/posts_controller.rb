@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :author_only
 
   def index
-    @posts = @user.posts.paginate(page: params[:page])
+    @posts = @user.posts.paginate(page: params[:page]).order('created_at DESC')
   end
 
   def new

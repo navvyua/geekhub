@@ -1,23 +1,17 @@
-nav.navbar.navbar-default role="navigation"
-  .container-fluid
-    button.navbar-toggle type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-      span.sr-only Toggle navigation
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
-    .navbar-header = link_to 'Blog', root_path, class: 'navbar-brand'
-
-    .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
-      - if current_user
-        ul.nav.navbar-nav.navbar-right
-          li = link_to 'Admin panel', admin_users_path if current_user.admin
-          li.dropdown
-            a.dropdown-toggle href="#" data-toggle="dropdown"
-              = image_tag current_user.profile.avatar, size: '20x20' if current_user.profile.avatar.url
-              = current_user.email
-              b.caret
-            ul.dropdown-menu
-              li = link_to 'User page', current_user
-              li = link_to 'Profile', user_profile_path(current_user)
-              li.divider role="separator"
-              li = link_to 'Logout', log_out_path
+- if current_user
+  ul.dropdown-content#user-dropdown
+    li = link_to 'User page', current_user
+    li = link_to 'Profile', user_profile_path(current_user)
+    li.divider
+    li = link_to 'Logout', log_out_path
+nav
+  .nav-wrapper.container-light
+    = link_to 'Blog', root_path, class: 'brand-logo'
+    - if current_user
+      ul.right
+        li = link_to 'Admin panel', admin_users_path if current_user.admin
+        li
+          a.dropdown-button data-activates="user-dropdown" href="#"
+            = image_tag current_user.profile.avatar, size: '30x30',
+                        class: 'circle nav-avatar' if current_user.profile.avatar.url
+            = current_user.email

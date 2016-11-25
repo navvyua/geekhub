@@ -1,19 +1,16 @@
-.page-header
-  h2 Sign Up
+.auth-form
+  h3.center-align Sign Up
+  = form_for @user do |f|
+    .input-field
+      = f.email_field :email, class: 'validate'
+      = f.label       :email
+    .input-field
+      = f.password_field :password, class: 'validate'
+      = f.label          :password
+    .input-field
+      = f.password_field :password_confirmation, class: 'validate'
+      = f.label          :password_confirmation
 
-.row
-  .col-md-8.col-md-offset-2
-    = form_for @user do |f|
-      .form-group
-        = f.label      :email
-        = f.text_field :email, class: 'form-control'
-      .form-group
-        = f.label          :password
-        = f.password_field :password, class: 'form-control'
-      .form-group
-        = f.label          :password_confirmation
-        = f.password_field :password_confirmation, class: 'form-control'
+    p.center-align = f.submit 'Sign Up', class: 'btn'
 
-      p = f.submit 'Sign Up', class: 'btn btn-primary btn-block'
-
-    = link_to 'Sign In', sign_in_path, class: 'btn btn-default btn-block'
+  p.center-align = link_to 'Sign In', sign_in_path, class: 'btn-flat waves-effect'

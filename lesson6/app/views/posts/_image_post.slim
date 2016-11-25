@@ -1,0 +1,12 @@
+.card.post.hoverable
+  .card-image
+    = image_tag post.image, class: 'responsive-img' if post.image.url
+    span.card-title = post.title
+  .card-content
+    p = post.text.truncate(80)
+  .card-action.right-align
+    = link_to 'Show', [@user, post], class: 'btn'
+    = link_to 'Edit', edit_user_post_path(@user, post),
+            class: 'btn btn-flat'
+    = link_to 'Delete', [@user, post], method: :delete,
+            class: 'btn btn-flat'

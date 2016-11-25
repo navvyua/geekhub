@@ -1,16 +1,14 @@
-.page-header
-  h2 Sign In
+.col.s4.offset-s4
+  h3.center-align Sign In
 
-.row
-  .col-md-8.col-md-offset-2
-    = form_tag sessions_path do
-      .form-group
-        = label_tag      :email
-        = text_field_tag :email, nil, class: 'form-control'
-      .form-group
-        = label_tag          :password
-        = password_field_tag :password, nil, class: 'form-control'
+  = form_tag sessions_path do
+    .input-field
+      = email_field_tag :email, nil, class: 'validate'
+      = label_tag       :email
+    .input-field
+      = password_field_tag :password, nil, class: 'validate'
+      = label_tag          :password
 
-      p = submit_tag 'Sign In', class: 'btn btn-primary btn-block'
+    p.center-align = submit_tag 'Sign In', class: 'btn'
 
-    p = link_to 'Sign Up', sign_up_path, class: 'btn btn-default btn-block'
+  p.center-align = link_to 'Sign Up', sign_up_path, class: 'btn-flat center waves-effect'

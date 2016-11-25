@@ -1,0 +1,10 @@
+.card.post.hoverable
+  .card-content
+    span.card-title = post.title
+    p = post.text.truncate(80)
+  .card-action.right-align
+    = link_to 'Show', [@user, post], class: 'btn'
+    = link_to 'Edit', edit_user_post_path(@user, post),
+            class: 'btn btn-flat'
+    = link_to 'Delete', [@user, post], method: :delete,
+            class: 'btn btn-flat'

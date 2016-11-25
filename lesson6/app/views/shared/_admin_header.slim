@@ -1,25 +1,11 @@
-nav.navbar.navbar-default role="navigation"
-  .container-fluid
-    button.navbar-toggle type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-      span.sr-only Toggle navigation
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
-
-    .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
-      ul.nav.navbar-nav
-        li = link_to 'Users', admin_users_path
-        li = link_to 'Posts', admin_posts_path
-        li = link_to 'Categories', admin_categories_path
-      ul.nav.navbar-nav.navbar-right
-        li = link_to 'Exit from admin panel', user_posts_path(current_user)
-        li.dropdown
-          a.dropdown-toggle href="#" data-toggle="dropdown"
-            = image_tag current_user.profile.avatar, size: '20x20' if current_user.profile.avatar.url
-            = current_user.email
-            b.caret
-          ul.dropdown-menu
-            li = link_to 'User page', current_user
-            li = link_to 'Profile', user_profile_path(current_user)
-            li.divider role="separator"
-            li = link_to 'Logout', log_out_path
+nav.nav-wrapper
+  ul.tabs.tabs-transparent
+    li.tab = link_to 'Users', admin_users_path
+    li.tab = link_to 'Posts', admin_posts_path
+    li.tab = link_to 'Categories', admin_categories_path
+  ul.right
+    li = link_to 'Admin panel', admin_users_path if current_user.admin
+    li.dropdown-button data-activates="user-dropdown"
+      = image_tag current_user.profile.avatar, size: '20x20' if current_user.profile.avatar.url
+      = current_user.email
+      i.material-icons.right arrow_drop_down
